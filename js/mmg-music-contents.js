@@ -22,7 +22,7 @@ let playHistory = []; // NOUVEAU: Pour suivre les titres récemment écoutés
 let userQueue = []; // File d'attente "visible" et gérée par l'utilisateur
 let currentQueueIndex = -1; // Index dans la file de lecture de CONTEXTE
 
-window.isAutoplayActive = true;
+window.isAutoplayActive = false;
 let isAutoplayActive = window.isAutoplayActive;
 let currentVolume = 100;
 let sfxEnabled = true;
@@ -6820,3 +6820,4 @@ function setupGenericDragAndDrop(container, itemSelector, handleSelector, onUpda
         }
     });
 }
+
