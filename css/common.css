@@ -1607,10 +1607,10 @@ body.dark-theme .card.spotify-style:hover {
     right: 0;
     width: 200px;
     height: 200px;
-    z-index: 9999;
+    z-index: 100;
     opacity: 1;
     clip-path: circle(1px at 0 0); /* ASTUCE: Le navigateur voit un élément opaque de 200px, mais on n'affiche qu'un pixel */
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 #large-player-section {
@@ -5085,6 +5085,7 @@ body.dark-theme .about-card-template {
     text-align: justify;
 
 }
+
 
 
 
