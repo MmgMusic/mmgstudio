@@ -1603,11 +1603,11 @@ body.dark-theme .card.spotify-style:hover {
     /* MODIFICATION: Pour que YouTube compte les vues, le lecteur doit avoir une taille minimale (200x200) */
     /* On le cache visuellement en le mettant derrière et transparent, mais il reste "affiché" pour le DOM */
     position: fixed;
-    top: 0;
+    bottom: -500px;
     left: 0;
     width: 200px;
     height: 200px;
-    z-index: -9999;
+    z-index: 1;
     opacity: 1;
     pointer-events: none;
 }
@@ -5082,4 +5082,5 @@ body.dark-theme .about-card-template {
     max-width: 42rem;
     margin: 0;
     text-align: justify;
+
 }
