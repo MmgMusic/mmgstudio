@@ -1,7 +1,7 @@
 // Ce fichier permet à votre site de fonctionner hors ligne en mettant en cache les ressources.
 
-const STATIC_CACHE_NAME = 'mmgear-static-v5';
-const DYNAMIC_CACHE_NAME = 'mmgear-dynamic-v5';
+const STATIC_CACHE_NAME = 'mmgear-static-v6';
+const DYNAMIC_CACHE_NAME = 'mmgear-dynamic-v6';
 
 // Fichiers essentiels de l'application à mettre en cache immédiatement.
 const STATIC_ASSETS = [
@@ -109,3 +109,4 @@ self.addEventListener('fetch', event => {
         );
     }
 });
+
