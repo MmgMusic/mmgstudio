@@ -165,6 +165,11 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
+    // Ignore events from the inactive player to prevent UI conflicts
+    if (activePlayer && event.target !== activePlayer) {
+        return;
+    }
+
     const playPauseBtn = document.getElementById('play-pause-btn');
     const playPauseBox = document.getElementById('play-pause-box');
     const backgroundMusic = document.getElementById('background-music');
@@ -4689,7 +4694,7 @@ function setupEventListeners() {
 
             input.value = '';
             showDialog(getTranslation('allAchievementsUnlocked'));
-            playAudio(sounds.select);
+            playAudio(sounds.achievementUnlocked);
             shopNeedsUpdate = true;
         } else if (code === 'musicleaks') {
             const allUnlockableTracks = Object.values(allSearchableItems).filter(t => t.isUnlockable);
@@ -6742,3 +6747,4 @@ function setupGenericDragAndDrop(container, itemSelector, handleSelector, onUpda
         }
     });
 }
+
