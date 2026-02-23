@@ -1,7 +1,7 @@
 // Ce fichier permet à votre site de fonctionner hors ligne en mettant en cache les ressources.
 
-const STATIC_CACHE_NAME = 'mmg-studio-static-v2';
-const DYNAMIC_CACHE_NAME = 'mmg-studio-dynamic-v2';
+const STATIC_CACHE_NAME = 'mmg-studio-static-v3';
+const DYNAMIC_CACHE_NAME = 'mmg-studio-dynamic-v3';
 
 // Fichiers essentiels de l'application à mettre en cache immédiatement.
 const STATIC_ASSETS = [
@@ -110,4 +110,5 @@ self.addEventListener('fetch', event => {
         );
     }
 });
+
 
