@@ -1,0 +1,850 @@
+/* css/music-studio-theme.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
+
+body.theme-music-studio {
+    /* --- DESIGN TOKENS (Framework Ultra-Hardware) --- */
+    --vst-bg: #000000;
+    /* Retour à la couleur exacte du framework (Noir pur) */
+    --vst-panel-top: #252a30;
+    --vst-panel-bottom: #0f1113;
+    --vst-accent: #ff9d00;
+    /* Orange Vintage */
+    --vst-signal: #34d399;
+    /* Vert Emeraude */
+    --vst-danger: #f87171;
+    /* Rouge Alerte */
+    --vst-border: #000000;
+    --vst-silk: rgba(255, 255, 255, 0.08);
+    --vst-font-mono: 'JetBrains Mono', monospace;
+    --vst-font-main: 'Inter', sans-serif;
+
+    /* Surcharge des variables globales */
+    --bg-color: var(--vst-bg);
+    --text-color: #a1a1aa;
+    --card-bg: rgba(15, 17, 20, 0.85);
+    /* Fond semi-transparent foncé */
+    --card-border: var(--vst-border);
+    --ui-bar-bg: #2b2b2b;
+    /* Gris foncé studio (Ajusté depuis common.css) */
+    --ui-bar-border: #000;
+    --active-color: #f59e0b;
+    /* Orange Studio (Ajusté depuis common.css) */
+    --icon-color: #a1a1aa;
+    --search-bar-bg: #07090b;
+    --card-style-bg: #14171a;
+    --card-style-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.05);
+    --main-board-bg: transparent;
+    /* CORRECTION: Retire le voile blanc par défaut qui éclaircissait le cuir */
+
+    font-family: var(--vst-font-main);
+    background-color: var(--vst-bg) !important;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png") !important;
+    color: #a1a1aa;
+}
+
+/* Cache l'animation de fond par défaut */
+body.theme-music-studio .animation-bg-area {
+    display: none;
+}
+
+/* --- COMPOSANT : LE PANEL (CHASSIS RACK) --- */
+/* Appliqué à Sidebar, Player, TopBar, Mobile Panels */
+body.theme-music-studio .sidebar,
+body.theme-music-studio .bottom-ui-container,
+body.theme-music-studio .top-bar,
+body.theme-music-studio .mobile-bottom-nav,
+body.theme-music-studio .mobile-mini-player,
+body.theme-music-studio .mobile-full-player,
+body.theme-music-studio .mobile-queue-panel {
+    background: linear-gradient(180deg, var(--vst-panel-top) 0%, var(--vst-panel-bottom) 100%) !important;
+    border: 2px solid #000 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+    position: relative;
+    overflow: hidden;
+    /* Simulation des poignées latérales (Rack Handles) via les bordures */
+    border-left: 12px solid #1a1a1a !important;
+    border-right: 12px solid #1a1a1a !important;
+}
+
+/* CORRECTION: Les éléments mobiles DOIVENT rester fixes pour être visibles */
+body.theme-music-studio .mobile-bottom-nav,
+body.theme-music-studio .mobile-mini-player,
+body.theme-music-studio .mobile-full-player {
+    position: fixed !important;
+}
+
+/* NOUVEAU: Supprime la bordure du haut pour la Top Bar */
+body.theme-music-studio .top-bar {
+    border-top: none !important;
+}
+
+/* Effet de grain métallique (Stardust) */
+body.theme-music-studio .sidebar::before,
+body.theme-music-studio .bottom-ui-container::before,
+body.theme-music-studio .mobile-full-player::before,
+body.theme-music-studio .top-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- UTILS : VIS (SCREWS) --- */
+/* Ajout des vis aux 4 coins des panels principaux */
+body.theme-music-studio .sidebar::after,
+body.theme-music-studio .bottom-ui-container::after,
+body.theme-music-studio .sidebar::after::after,
+body.theme-music-studio .mobile-full-player::after {
+    /* On utilise ::after pour créer une vis, et on peut en ajouter d'autres via d'autres éléments si besoin */
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background:
+        linear-gradient(135deg, transparent 42%, #000 42%, #000 58%, transparent 58%),
+        radial-gradient(circle at 35% 35%, #888, #111);
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Positionnement des vis (Top Right par défaut pour l'exemple, ajusté selon conteneur) */
+body.theme-music-studio .sidebar::after {
+    top: 10px;
+    right: 4px;
+}
+
+body.theme-music-studio .mobile-full-player::after {
+    top: 10px;
+    right: 4px;
+}
+
+body.theme-music-studio .bottom-ui-container::after {
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+}
+
+/* --- COMPOSANT : LE MODULE (ENCASTREMENT) --- */
+/* Appliqué aux Cartes */
+body.theme-music-studio .dashboard-card:not(.carousel-card),
+body.theme-music-studio .settings-card,
+body.theme-music-studio .about-card-template,
+body.theme-music-studio .news-card-container,
+body.theme-music-studio .reco-card,
+body.theme-music-studio .daily-bonus-card,
+body.theme-music-studio .upcoming-release-card,
+body.theme-music-studio #daily-bonus-section,
+body.theme-music-studio .shop-list-container {
+    /* MODIFICATION: Effet "verre fumé" pour plus de transparence et de profondeur */
+    background: rgba(15, 17, 20, 0.65) !important;
+    /* Plus transparent */
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    /* Bordure lumineuse subtile */
+    border-radius: 4px !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    /* Ombre interne + Ombre portée externe */
+    color: #a1a1aa;
+    position: relative;
+}
+
+/* NOUVEAU: Cartes de contenu (titres, vidéos) transparentes */
+body.theme-music-studio .card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #a1a1aa;
+    /* Garde la couleur du texte du thème */
+}
+
+/* NOUVEAU: Rétablit l'effet de survol en mode liste */
+body.theme-music-studio .content-sections-card.list-view .card:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px;
+}
+
+/* NOUVEAU: Correction pour le Carrousel Hero */
+body.theme-music-studio .carousel-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5) !important;
+    /* Ombre plus prononcée pour le thème sombre */
+}
+
+/* NOUVEAU: Supprime les vis du Carrousel Hero */
+body.theme-music-studio .carousel-card::after {
+    display: none !important;
+}
+
+/* NOUVEAU: Reset des items dans le widget bonus PC pour qu'ils soient transparents */
+body.theme-music-studio #daily-bonus-section .daily-bonus-list-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* NOUVEAU: Reset des items dans la boutique pour qu'ils soient transparents */
+body.theme-music-studio .shop-list-container .shop-list-item {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+}
+
+/* NOUVEAU: Correction des couleurs de texte et d'icône dans le bonus quotidien */
+body.theme-music-studio .daily-bonus-list-item .reco-title,
+body.theme-music-studio .daily-bonus-list-item .reco-subtitle {
+    color: #a1a1aa !important;
+    text-shadow: none !important;
+}
+
+body.theme-music-studio .daily-bonus-list-item .reco-image-container {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--vst-accent) !important;
+}
+
+/* NOUVEAU: Correction des couleurs de texte dans la boutique */
+body.theme-music-studio .shop-list-title {
+    color: #a1a1aa !important;
+    font-family: var(--vst-font-mono) !important;
+    text-shadow: none !important;
+}
+
+/* NOUVEAU: Titre orange uniquement si l'élément est sélectionné */
+body.theme-music-studio .shop-list-item.selected .shop-list-title {
+    color: var(--vst-accent) !important;
+}
+
+body.theme-music-studio .shop-list-subtitle,
+body.theme-music-studio .shop-item-status-text {
+    color: #71717a !important;
+    font-family: var(--vst-font-mono) !important;
+}
+
+/* Grain sur les modules */
+body.theme-music-studio .dashboard-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Vis décoratives sur les cartes (Top Right) */
+body.theme-music-studio .dashboard-card::after,
+body.theme-music-studio .settings-card::after,
+body.theme-music-studio .shop-list-container::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background:
+        linear-gradient(45deg, transparent 42%, #000 42%, #000 58%, transparent 58%),
+        radial-gradient(circle at 35% 35%, #777, #1a1a1a);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* NOUVEAU: Cache les décorations pour les cartes transparentes */
+body.theme-music-studio .card::before,
+body.theme-music-studio .card::after {
+    display: none !important;
+}
+
+/* --- COMPOSANT : LCD SCREEN --- */
+/* Appliqué à la recherche, inputs, et affichages */
+body.theme-music-studio .search-bar,
+body.theme-music-studio #cheat-code-input,
+body.theme-music-studio .search-box {
+    background: #07090b !important;
+    border: 2px solid #000 !important;
+    border-radius: 3px !important;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.9) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+body.theme-music-studio .search-bar input,
+body.theme-music-studio #cheat-code-input,
+body.theme-music-studio .search-box input {
+    font-family: var(--vst-font-mono) !important;
+    color: var(--vst-accent) !important;
+    text-shadow: 0 0 5px rgba(255, 157, 0, 0.3);
+    z-index: 2;
+    position: relative;
+}
+
+/* Scanlines Effect pour LCD */
+body.theme-music-studio .search-bar::after,
+body.theme-music-studio .search-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255, 157, 0, 0.03) 50%, transparent 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.theme-music-studio .search-bar svg,
+body.theme-music-studio .search-box svg {
+    color: #555;
+    z-index: 2;
+    position: relative;
+}
+
+/* NOUVEAU: Correction couleur texte et style compteur pièces boutique */
+body.theme-music-studio .shop-coin-counter {
+    background: #07090b !important;
+    border: 2px solid #000 !important;
+    border-radius: 3px !important;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.9) !important;
+}
+
+body.theme-music-studio .shop-coin-counter p,
+body.theme-music-studio .shop-coin-counter .coin-icon-svg {
+    color: var(--vst-accent) !important;
+    text-shadow: none !important;
+}
+
+/* --- SÉRIGRAPHIE (SILK TEXT) --- */
+body.theme-music-studio h1,
+body.theme-music-studio h2,
+body.theme-music-studio h3,
+body.theme-music-studio .section-title,
+body.theme-music-studio .mmg-title,
+body.theme-music-studio .shop-title,
+body.theme-music-studio #mobile-header-title {
+    font-family: var(--vst-font-mono) !important;
+    font-weight: 700 !important;
+    color: var(--vst-accent) !important;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 10px rgba(255, 157, 0, 0.3) !important;
+}
+
+/* NOUVEAU: Titres des cartes (Albums, Titres) en gris et sans majuscules forcées */
+body.theme-music-studio .card__title {
+    font-family: var(--vst-font-mono) !important;
+    font-weight: 700 !important;
+    color: #a1a1aa !important;
+    text-shadow: none !important;
+}
+
+/* Titre orange si lecture en cours */
+body.theme-music-studio .card.now-playing-card .card__title {
+    color: var(--vst-accent) !important;
+    text-shadow: 0 0 10px rgba(255, 157, 0, 0.3) !important;
+}
+
+/* NOUVEAU: Elements qui restent en majuscules (Titres de section, sous-titres reco) */
+body.theme-music-studio .sidebar-section-title,
+body.theme-music-studio .reco-subtitle,
+body.theme-music-studio .about-card-tag {
+    font-family: var(--vst-font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    color: #71717a !important;
+    letter-spacing: 0.1em;
+}
+
+/* NOUVEAU: Elements en casse normale (Descriptions, Liens sidebar) */
+body.theme-music-studio .card__description,
+body.theme-music-studio .sidebar-nav-link span {
+    font-family: var(--vst-font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    color: #71717a !important;
+    letter-spacing: 0.05em;
+}
+
+/* --- CONTROLS (Boutons & Tabs) --- */
+body.theme-music-studio .profile-tab,
+body.theme-music-studio .sidebar-nav-link,
+body.theme-music-studio .dashboard-card-button,
+body.theme-music-studio .about-switch-btn,
+body.theme-music-studio .shop-buy-btn,
+body.theme-music-studio .social-btn-small,
+body.theme-music-studio .theme-buy-btn {
+    border-radius: 2px !important;
+    transition: all 0.1s;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* NOUVEAU: Correction couleur texte boutons About */
+body.theme-music-studio .about-switch-btn,
+body.theme-music-studio .social-btn-small {
+    color: #a1a1aa !important;
+}
+
+/* NOUVEAU: Boutons Top Bar sans cadre */
+body.theme-music-studio .top-bar-btn {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #64748B !important;
+    border-radius: 2px !important;
+}
+
+/* NOUVEAU: Force la couleur des SVG dans les boutons Top Bar (Override Mobile/Common) */
+body.theme-music-studio .top-bar-btn svg,
+body.theme-music-studio .top-bar-btn i {
+    color: #64748B !important;
+    stroke: #64748B !important;
+}
+
+/* NOUVEAU: Force le style des boutons dans le header PC */
+body.theme-music-studio .top-bar-right .top-bar-btn {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #64748B !important;
+}
+
+/* NOUVEAU: Style épuré pour les onglets (Playlist, Vidéos...) */
+body.theme-music-studio .playlist-tab-btn {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    color: #a1a1aa !important;
+    border-radius: 0 !important;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* NOUVEAU: Switch de profil mobile en Orange Studio */
+body.theme-music-studio .profile-switch-btn.active {
+    color: var(--vst-accent) !important;
+    text-shadow: 0 0 10px rgba(255, 157, 0, 0.4);
+}
+
+body.theme-music-studio .profile-switch::after {
+    background-color: var(--vst-accent) !important;
+    box-shadow: 0 0 8px var(--vst-accent);
+}
+
+/* Suppression de la bordure sous le switch de profil mobile */
+body.theme-music-studio .profile-switch {
+    border-bottom: none !important;
+}
+
+/* État Actif (LED Style) */
+body.theme-music-studio .profile-tab.active,
+body.theme-music-studio .sidebar-nav-link.active {
+    background-color: rgba(255, 157, 0, 0.1) !important;
+    color: var(--vst-accent) !important;
+    border: 1px solid var(--vst-accent) !important;
+    box-shadow: 0 0 10px rgba(255, 157, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* NOUVEAU: Visibilité des switchers (Grid/List & Langue) - Style Texte Glow sans boite */
+body.theme-music-studio .view-switch-btn,
+body.theme-music-studio .lang-btn {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: var(--vst-font-mono) !important;
+    box-shadow: none !important;
+}
+
+body.theme-music-studio .view-switch-btn:hover,
+body.theme-music-studio .lang-btn:hover {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.theme-music-studio .view-switch-btn.active,
+body.theme-music-studio .lang-btn.active {
+    background: transparent !important;
+    color: var(--vst-accent) !important;
+    text-shadow: 0 0 10px var(--vst-accent), 0 0 20px var(--vst-accent);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Supprime les bordures des conteneurs de switchers */
+body.theme-music-studio .language-switcher,
+body.theme-music-studio .view-switcher-settings {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* État Actif pour les onglets épurés */
+body.theme-music-studio .playlist-tab-btn.active {
+    color: var(--vst-accent) !important;
+    border-bottom-color: var(--vst-accent) !important;
+    text-shadow: 0 0 8px rgba(255, 157, 0, 0.4);
+}
+
+/* Indicateur LED pour la sidebar (Vert = Signal) */
+body.theme-music-studio .sidebar-nav-link.active::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--vst-signal);
+    box-shadow: 0 0 8px var(--vst-signal);
+    margin-right: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* --- COMPOSANT : KNOB (POTENTIOMÈTRE) --- */
+/* Appliqué aux boutons ronds du lecteur */
+body.theme-music-studio .player-buttons>i,
+body.theme-music-studio .mobile-player-controls>i,
+body.theme-music-studio .controls-box,
+/* NOUVEAU: Applique le style Knob au conteneur Play/Pause PC */
+body.theme-music-studio .mobile-player-play-box {
+    /* NOUVEAU: Applique le style Knob au conteneur Play/Pause Mobile */
+    background: radial-gradient(circle at 30% 30%, #444, #111);
+    border: 3px solid #000;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #888;
+    position: relative;
+    transition: transform 0.1s linear;
+}
+
+/* Indicateur sur le knob (Trait coloré) */
+body.theme-music-studio .player-buttons>i::after,
+body.theme-music-studio .mobile-player-controls>i::after,
+body.theme-music-studio .controls-box::after,
+body.theme-music-studio .mobile-player-play-box::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 3px;
+    height: 8px;
+    background: var(--vst-accent);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 0 5px var(--vst-accent);
+    opacity: 0.3;
+    /* Éteint par défaut */
+}
+
+body.theme-music-studio .player-buttons>i:hover,
+body.theme-music-studio .mobile-player-controls>i:hover,
+body.theme-music-studio .controls-box:hover,
+body.theme-music-studio .mobile-player-play-box:hover {
+    color: var(--vst-accent);
+    transform: rotate(15deg);
+    /* Petite rotation au survol */
+    background-color: transparent !important;
+    /* Évite le gris par défaut */
+}
+
+body.theme-music-studio .player-buttons>i:hover::after,
+body.theme-music-studio .mobile-player-controls>i:hover::after,
+body.theme-music-studio .controls-box:hover::after,
+body.theme-music-studio .mobile-player-play-box:hover::after {
+    opacity: 1;
+    /* Allumé au survol */
+}
+
+/* Correction couleur icône Play/Pause à l'intérieur du Knob */
+body.theme-music-studio .controls-box i,
+body.theme-music-studio .mobile-player-play-box i {
+    color: #ccc;
+    /* Plus clair pour être visible */
+    transition: color 0.2s;
+}
+
+/* Changement de couleur de l'icône au survol du Knob */
+body.theme-music-studio .controls-box:hover i,
+body.theme-music-studio .mobile-player-play-box:hover i {
+    color: var(--vst-accent);
+}
+
+/* Correction centrage icône Pause (retire le décalage optique du Play) */
+body.theme-music-studio .controls-box .fa-pause,
+body.theme-music-studio .mobile-player-play-box .fa-pause {
+    margin-left: 0 !important;
+}
+
+/* Barres de progression */
+body.theme-music-studio .progress-bar,
+body.theme-music-studio .mission-progress-bar {
+    background: #000 !important;
+    border: 1px solid #333;
+    height: 6px !important;
+    border-radius: 2px !important;
+}
+
+body.theme-music-studio .progress-fill,
+body.theme-music-studio .mission-progress-fill {
+    background: var(--vst-accent) !important;
+    box-shadow: 0 0 10px var(--vst-accent);
+    border-radius: 1px !important;
+}
+
+/* Switcher de profil "Studio" */
+body.theme-music-studio .brand-block .mmg-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    letter-spacing: -0.05em;
+}
+
+body.theme-music-studio .text-music {
+    background: none;
+    -webkit-text-fill-color: var(--vst-accent);
+    text-shadow: 0 0 15px rgba(255, 157, 0, 0.5);
+}
+
+body.theme-music-studio .text-beats {
+    background: none;
+    -webkit-text-fill-color: var(--vst-danger);
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+/* Correction du glow coupé sur le switcher Studio */
+body.theme-music-studio .rolling-viewport {
+    height: 60px !important;
+    overflow: hidden;
+}
+
+body.theme-music-studio .rolling-track span {
+    height: 60px !important;
+}
+
+/* Ajustement de la translation pour la nouvelle hauteur */
+body.theme-music-studio .brand-block.is-beats .rolling-track {
+    transform: translateY(-60px) !important;
+}
+
+/* --- VENTILATION (VENTS) --- */
+/* Ajout de fentes d'aération décoratives en bas de la sidebar */
+body.theme-music-studio .sidebar-content-wrapper::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.6);
+    margin-top: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02),
+        0 4px 0 rgba(0, 0, 0, 0.6),
+        0 5px 0 rgba(255, 255, 255, 0.02),
+        0 8px 0 rgba(0, 0, 0, 0.6),
+        0 9px 0 rgba(255, 255, 255, 0.02);
+    width: 60%;
+    align-self: center;
+}
+
+/* --- AJUSTEMENTS PC (Suppression des bordures "Rack" entre les panneaux) --- */
+@media (min-width: 953px) {
+
+    body.theme-music-studio .sidebar,
+    body.theme-music-studio .bottom-ui-container {
+        /* On remplace les bordures épaisses par des bordures fines techniques */
+        border-style: solid !important;
+        border-color: #000 !important;
+        border-radius: 0 !important;
+        /* On garde une ombre interne pour le relief "Hardware", mais sans l'ombre portée externe massive */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+        /* CORRECTION: Suppression de l'ombre externe */
+        /* Force l'affichage et le fond pour éviter qu'il ne soit caché */
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: linear-gradient(180deg, var(--vst-panel-top) 0%, var(--vst-panel-bottom) 100%) !important;
+        backdrop-filter: none !important;
+    }
+
+    body.theme-music-studio .sidebar {
+        /* NOUVEAU: Retour au style "Rack" pour la sidebar PC (Gradient + Bordure) */
+        background: linear-gradient(180deg, var(--vst-panel-top) 0%, var(--vst-panel-bottom) 100%) !important;
+        backdrop-filter: none !important;
+        /* Bordure droite épaisse pour effet rack */
+        border-right: 4px solid #1a1a1a !important;
+        box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.1), 5px 0 15px rgba(0, 0, 0, 0.5) !important;
+        border-width: 0 4px 0 0 !important;
+    }
+
+    body.theme-music-studio .top-bar {
+        /* NOUVEAU: Header PC transparent sans conteneur */
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr !important;
+        align-items: center !important;
+        padding: 0 2.5rem !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    body.theme-music-studio .bottom-ui-container {
+        /* Bordure haute uniquement */
+        z-index: 9999 !important;
+        /* S'assure qu'il est bien au-dessus de tout */
+        border: 2px solid #000 !important;
+        background: linear-gradient(180deg, var(--vst-panel-top) 0%, var(--vst-panel-bottom) 100%) !important;
+    }
+
+    /* On garde la vis sur la sidebar PC */
+    body.theme-music-studio .bottom-ui-container::after {
+        display: none !important;
+    }
+
+    /* CORRECTION: Style "Module" pour les icônes du header PC, sans casser l'alignement */
+    body.theme-music-studio .top-bar-right {
+        background: rgba(15, 17, 20, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+        /* On ne touche PAS à la position pour conserver le centrage vertical */
+    }
+
+    /* NOUVEAU: Style "Module" pour les listes sur PC (Reco & Guides) */
+    body.theme-music-studio #playlist-reco-list,
+    body.theme-music-studio .guide-list {
+        background: rgba(15, 17, 20, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+        padding: 0 !important;
+        overflow: hidden;
+    }
+
+    /* Items transparents dans les listes */
+    body.theme-music-studio #playlist-reco-list .reco-list-item,
+    body.theme-music-studio .guide-list .guide-row {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: none !important;
+    }
+
+    body.theme-music-studio #playlist-reco-list .reco-list-item:last-child,
+    body.theme-music-studio .guide-list .guide-row:last-child {
+        border-bottom: none !important;
+    }
+}
+
+/* Menus Contextuels (Desktop) */
+body.theme-music-studio .card-menu-dropdown,
+body.theme-music-studio #card-context-menu {
+    background: #1a1a1a !important;
+    border: 1px solid var(--vst-accent) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    border-radius: 2px !important;
+    padding: 5px !important;
+}
+
+body.theme-music-studio .card-menu-item,
+body.theme-music-studio .context-menu-btn {
+    color: #a1a1aa !important;
+    border-radius: 2px !important;
+    font-family: var(--vst-font-mono) !important;
+    font-size: 0.85rem !important;
+    transition: all 0.1s !important;
+}
+
+body.theme-music-studio .card-menu-item:hover,
+body.theme-music-studio .context-menu-btn:hover {
+    background-color: var(--vst-accent) !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+}
+
+/* Correction du badge de pièces dans le bonus quotidien */
+body.theme-music-studio .daily-bonus-list-item .bonus-badge {
+    background: var(--vst-accent) !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+    font-family: var(--vst-font-mono) !important;
+}
+
+/* --- AJUSTEMENTS MOBILE --- */
+@media (max-width: 952px) {
+
+    /* Rétablir la position fixe pour la navigation et le mini-lecteur */
+    body.theme-music-studio .mobile-bottom-nav,
+    body.theme-music-studio .mobile-mini-player {
+        position: fixed !important;
+        z-index: 1000 !important;
+        /* Réduire les bordures latérales sur mobile pour gagner de la place */
+        border-left: 2px solid #000 !important;
+        border-right: 2px solid #000 !important;
+    }
+
+    /* Ajustement Top Bar Mobile */
+    body.theme-music-studio .top-bar {
+        z-index: 50 !important;
+        /* S'assure qu'elle est au-dessus du contenu */
+        border-left: 0 !important;
+        border-right: 0 !important;
+        /* NOUVEAU: Permet à l'ombre portée de s'afficher sur le contenu et fixe la barre */
+        overflow: visible !important;
+        position: sticky !important;
+        top: 0 !important;
+    }
+
+    /* NOUVEAU: Force le fond du header mobile (dégradé + texture) */
+    body.theme-music-studio .top-bar {
+        background: linear-gradient(180deg, var(--vst-panel-top) 0%, var(--vst-panel-bottom) 100%) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Positionnement du mini-lecteur au-dessus de la nav */
+    body.theme-music-studio .mobile-mini-player {
+        bottom: var(--mobile-nav-height) !important;
+    }
+
+    /* NOUVEAU: Cache complètement la barre de recherche repliée (bordures/ombres) */
+    body.theme-music-studio .search-bar:not(.visible) {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* NOUVEAU: Force le style LCD pour la barre de recherche mobile quand elle est visible */
+    body.theme-music-studio .search-bar.visible {
+        background: #07090b !important;
+        border: 2px solid #000 !important;
+        border-radius: 3px !important;
+        box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    /* NOUVEAU: Unifie le fond du header mobile en le rendant transparent */
+    body.theme-music-studio .mobile-header-icons {
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    body.theme-music-studio .mobile-full-player {
+        z-index: 9999 !important;
+        display: flex !important;
+    }
+
+    body.theme-music-studio .mobile-full-player.active {
+        transform: translateY(0) !important;
+    }
+}

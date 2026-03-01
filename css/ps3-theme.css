@@ -1,0 +1,608 @@
+/* css/ps3-theme.css */
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@200;300;400;600;700&display=swap');
+
+body.theme-playstation {
+    --ps3-blue-top: #0058b1;
+    --ps3-blue-bottom: #002d5c;
+    --ps3-glass: rgba(255, 255, 255, 0.08);
+    --ps3-border: rgba(255, 255, 255, 0.15);
+    --ps3-font: 'Saira', sans-serif;
+
+    /* Surcharge des variables globales */
+    --bg-color: transparent;
+    /* Géré par le dégradé du body */
+    --text-color: white;
+    --card-bg: var(--ps3-glass);
+    --card-border: var(--ps3-border);
+    --ui-bar-bg: transparent;
+    /* Transparent pour l'effet XMB (Ajusté depuis common.css) */
+    --ui-bar-border: var(--ps3-border);
+    --icon-color: white;
+    --active-color: #00a0e9;
+    /* Bleu PS (Ajusté depuis common.css) */
+    --search-bar-bg: rgba(255, 255, 255, 0.1);
+    --card-style-bg: var(--ps3-glass);
+    --card-style-shadow: none;
+    --main-board-bg: transparent;
+
+    font-family: var(--ps3-font);
+    background: linear-gradient(to bottom, var(--ps3-blue-top), var(--ps3-blue-bottom));
+    background-attachment: fixed;
+    color: white;
+}
+
+/* Cache l'animation de fond par défaut */
+body.theme-playstation .animation-bg-area {
+    display: none;
+}
+
+/* Affiche le moteur de vagues PS3 */
+body.theme-playstation .ps3-waves-engine {
+    display: block;
+}
+
+/* Sidebar */
+body.theme-playstation .sidebar {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(30px);
+    border-right: 1px solid var(--ps3-border);
+}
+
+body.theme-playstation .sidebar-nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    border-left: 4px solid transparent;
+    border-radius: 0;
+    padding: 12px 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+body.theme-playstation .sidebar-nav-link:hover,
+body.theme-playstation .sidebar-nav-link.active {
+    color: white;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    border-left: 4px solid white;
+    transform: translateX(8px);
+    box-shadow: none;
+}
+
+/* Top Bar */
+body.theme-playstation .top-bar {
+    background: transparent;
+    border-bottom: none;
+}
+
+body.theme-playstation .search-bar,
+body.theme-playstation .search-box {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 4px !important;
+}
+
+/* Correction: Empêche le fond/contour blanc au focus */
+body.theme-playstation .search-bar:focus-within,
+body.theme-playstation .search-box:focus-within {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+    outline: none !important;
+}
+
+body.theme-playstation .search-bar input,
+body.theme-playstation .search-box input,
+body.theme-playstation #cheat-code-input {
+    color: white !important;
+}
+
+body.theme-playstation .search-bar input::placeholder,
+body.theme-playstation .search-box input::placeholder,
+body.theme-playstation #cheat-code-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.theme-playstation .top-bar-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
+/* Cartes & Conteneurs */
+body.theme-playstation .dashboard-card,
+body.theme-playstation .settings-card,
+body.theme-playstation .about-card-template,
+body.theme-playstation .news-card-container,
+body.theme-playstation .reco-card,
+body.theme-playstation .daily-bonus-card,
+body.theme-playstation .upcoming-release-card,
+body.theme-playstation .reco-list-item,
+body.theme-playstation .daily-bonus-list-item,
+body.theme-playstation .guide-row,
+body.theme-playstation .shop-coin-counter,
+body.theme-playstation .playlist-tab-btn {
+    background: var(--ps3-glass) !important;
+    border: 1px solid var(--ps3-border) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 4px;
+    box-shadow: none !important;
+    color: white !important;
+}
+
+/* NOUVEAU: Shop Text blanc pur */
+body.theme-playstation .shop-coin-counter p,
+body.theme-playstation .shop-coin-counter .coin-icon-svg {
+    color: white !important;
+}
+
+/* NOUVEAU: Forcer l'icône de recherche mobile en blanc */
+body.theme-playstation .search-box .search-icon-input,
+body.theme-playstation .search-box .search-tag-btn {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* NOUVEAU: Forcer les icônes PC en blanc */
+body.theme-playstation .top-bar-pc-clean .search-bar svg.lucide-search,
+body.theme-playstation .top-bar-right .top-bar-btn svg {
+    color: white !important;
+}
+
+/* NOUVEAU: Style glassy pour le top-bar-right PC */
+body.theme-playstation .top-bar-right {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+}
+
+/* Spécifique pour les cartes en grille : Pas de bordure */
+body.theme-playstation .card {
+    background: transparent;
+    border: none;
+    /* Pas de contour blanc */
+    backdrop-filter: none;
+    border-radius: 20px;
+    box-shadow: none;
+    color: white;
+}
+
+body.theme-playstation .dashboard-card:hover,
+body.theme-playstation .reco-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-playstation .card:hover {
+    background: transparent;
+    /* Pas de bordure au survol non plus */
+    transform: translateY(-5px);
+    box-shadow: none;
+}
+
+/* NOUVEAU: Surcharge pour le mode liste sur PS3 (Fond plus foncé au survol) */
+body.theme-playstation .content-sections-card.list-view .card:hover {
+    background: rgba(0, 0, 0, 0.3) !important;
+    /* "Un peu plus foncé" */
+    transform: none !important;
+    /* Pas de mouvement vertical en liste */
+    border-radius: 8px !important;
+}
+
+/* CORRECTION: Règle plus spécifique pour les listes unifiées (Titres, Bibliothèque, etc.) */
+body.theme-playstation #titles-section .content-sections-card.list-view .card:hover,
+body.theme-playstation #video-list-section .content-sections-card.list-view .card:hover,
+body.theme-playstation #library-container.list-view .card:hover,
+body.theme-playstation #search-results-cards.list-view .card:hover {
+    background: rgba(0, 0, 0, 0.3) !important;
+    /* "Un peu plus foncé" */
+}
+
+/* Correction pour le Carrousel Hero : Restaure les arrondis et retire le cadre carré */
+body.theme-playstation .carousel-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 40px !important;
+}
+
+/* Typographie */
+body.theme-playstation .card__title,
+body.theme-playstation .card__title>span,
+body.theme-playstation .section-title,
+body.theme-playstation h1,
+body.theme-playstation h2,
+body.theme-playstation h3,
+body.theme-playstation h4,
+body.theme-playstation .about-card-title,
+body.theme-playstation .reco-title,
+body.theme-playstation .mmg-title,
+body.theme-playstation .list-view-title>span,
+body.theme-playstation .shop-title,
+body.theme-playstation .daily-bonus-title,
+body.theme-playstation .upcoming-title,
+body.theme-playstation .library-section-title,
+body.theme-playstation #mobile-header-title {
+    color: white !important;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+body.theme-playstation .card__description,
+body.theme-playstation .reco-subtitle,
+body.theme-playstation .about-card-description {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Correction globale des couleurs de texte pour les listes (Shop, Guides, Reco) */
+body.theme-playstation .reco-list-title,
+body.theme-playstation .reco-list-subtitle,
+body.theme-playstation .guide-label,
+body.theme-playstation .shop-list-title,
+body.theme-playstation .shop-list-subtitle,
+body.theme-playstation .about-card-title,
+body.theme-playstation .about-card-description {
+    color: white !important;
+}
+
+/* Player Bar PC (adopte la couleur bleue foncée du mobile) */
+body.theme-playstation .bottom-ui-container {
+    background: rgba(10, 25, 50, 0.75) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.theme-playstation .progress-bar {
+    background: rgba(255, 255, 255, 0.2);
+    height: 2px;
+    border-radius: 2px;
+}
+
+body.theme-playstation .progress-fill {
+    background: white;
+    box-shadow: 0 0 10px white;
+    border-radius: 2px;
+}
+
+/* Boutons */
+body.theme-playstation .shop-buy-btn,
+body.theme-playstation .theme-buy-btn,
+body.theme-playstation .dashboard-card-button,
+body.theme-playstation .daily-bonus-action-btn,
+body.theme-playstation .about-switch-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 0;
+    transition: 0.2s;
+}
+
+body.theme-playstation #cheat-code-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    transition: 0.2s;
+}
+
+body.theme-playstation .shop-buy-btn:hover,
+body.theme-playstation .theme-buy-btn:hover,
+body.theme-playstation .dashboard-card-button:hover,
+body.theme-playstation .daily-bonus-action-btn:hover,
+body.theme-playstation .about-switch-btn:hover {
+    background: white;
+    color: var(--ps3-blue-top);
+}
+
+body.theme-playstation #cheat-code-btn:hover {
+    transform: translateX(5px);
+}
+
+/* Switcher de profil */
+body.theme-playstation .brand-block .mmg-title {
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+body.theme-playstation .text-music,
+body.theme-playstation .text-beats {
+    background: none;
+    -webkit-text-fill-color: white;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* NOUVEAU: Correction du glow coupé sur le switcher Computer */
+body.theme-playstation .rolling-viewport {
+    height: 60px;
+    /* Augmenté pour laisser place au glow */
+    overflow: hidden;
+}
+
+body.theme-playstation .rolling-track span {
+    height: 60px;
+    /* Ajusté à la hauteur du viewport */
+}
+
+/* Surcharge de la translation pour la nouvelle hauteur */
+body.theme-playstation .brand-block.is-beats .rolling-track {
+    transform: translateY(-60px);
+}
+
+/* Moteur de vagues (Caché par défaut) */
+.ps3-waves-engine {
+    position: fixed !important;
+    /* Force la position fixe contre les règles globales */
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    display: none;
+}
+
+/* Animation supprimée pour statique */
+.ps3-wave-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    opacity: 0.5;
+    /* Position statique pour garder l'effet visuel sans mouvement */
+    transform: scale(1.1) translate(-1%, -1%) rotate(0deg);
+}
+
+.ps3-wave-layer:nth-child(2) {
+    opacity: 0.3;
+    transform: scale(1.2) translate(1%, 1%) rotate(1.5deg);
+}
+
+/* Correction visibilité badge filtre */
+body.theme-playstation .filter-count-badge {
+    color: var(--ps3-blue-top);
+    background-color: white;
+}
+
+/* NOUVEAU: Visibilité des switchers (Grid/List & Langue) - Style Texte Glow sans boite */
+body.theme-playstation .view-switch-btn,
+body.theme-playstation .lang-btn {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    font-weight: 300;
+    box-shadow: none !important;
+}
+
+body.theme-playstation .view-switch-btn:hover,
+body.theme-playstation .lang-btn:hover {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.theme-playstation .view-switch-btn.active,
+body.theme-playstation .lang-btn.active {
+    background: transparent !important;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px var(--ps3-blue-top);
+    font-weight: 700;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Supprime les bordures des conteneurs de switchers */
+body.theme-playstation .language-switcher,
+body.theme-playstation .view-switcher-settings {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Icones réseaux sociaux transparentes */
+body.theme-playstation .social-btn-small {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+body.theme-playstation .social-btn-small:hover {
+    background: white;
+    color: var(--ps3-blue-top);
+}
+
+/* Context Menu (Clic droit / 3 points) - Style Glassy Foncé */
+body.theme-playstation .card-menu-dropdown,
+body.theme-playstation #card-context-menu {
+    background: rgba(10, 25, 50, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 12px !important;
+    color: white !important;
+}
+
+body.theme-playstation .card-menu-item,
+body.theme-playstation .context-menu-btn {
+    transition: all 0.2s ease !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.theme-playstation .card-menu-item i,
+body.theme-playstation .context-menu-btn i {
+    color: white !important;
+    opacity: 0.7;
+}
+
+body.theme-playstation .card-menu-item:hover,
+body.theme-playstation .context-menu-btn:hover {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent) !important;
+    color: white !important;
+    padding-left: 18px !important;
+    /* Effet de glissement XMB */
+}
+
+/* --- MOBILE BLUR FIX --- */
+/* Applique un effet de verre flouté (Blur) pour la lisibilité sur mobile */
+body.theme-playstation .mobile-bottom-nav,
+body.theme-playstation .mobile-mini-player,
+body.theme-playstation .mobile-full-player,
+body.theme-playstation .mobile-queue-panel,
+body.theme-playstation .mobile-card-menu-panel,
+body.theme-playstation .settings-card {
+    background: rgba(10, 25, 50, 0.75) !important;
+    /* Bleu nuit profond semi-transparent */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Header transparent pour se fondre avec le switch de profil */
+body.theme-playstation .mobile-header-icons {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+body.theme-playstation .mobile-header-icons svg,
+body.theme-playstation .mobile-header-icons i,
+body.theme-playstation .mobile-header-icons .lucide,
+body.theme-playstation .mobile-header-icons a {
+    color: white !important;
+    stroke: white !important;
+}
+
+/* Texte header switch mobile en blanc */
+body.theme-playstation .profile-switch-btn {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.theme-playstation .profile-switch-btn.active {
+    color: white !important;
+}
+
+/* NOUVEAU: Style du badge (bouton) dans le bonus quotidien et texte blanc */
+body.theme-playstation .daily-bonus-list-item .bonus-badge {
+    background: transparent !important;
+    border: 1px solid var(--ps3-border) !important;
+    color: white !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+body.theme-playstation .daily-bonus-list-item .reco-title,
+body.theme-playstation .daily-bonus-list-item .reco-subtitle {
+    color: white !important;
+}
+
+body.theme-playstation .context-menu-btn {
+    color: white !important;
+}
+
+/* Ajustements mobile récupérés de mobile.css */
+@media (max-width: 952px) {
+
+    /* Fix PS Theme Mobile Top Bar */
+    body.theme-playstation .top-bar {
+        background-color: #002d5c !important;
+        /* PS3 Blue */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    body.theme-playstation .top-bar-btn,
+    body.theme-playstation #mobile-header-title {
+        color: #ffffff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    body.theme-playstation .mobile-header-icons {
+        background-color: transparent !important;
+        /* Let top-bar bg show */
+    }
+
+    /* Boutons actifs en blanc brillant */
+    body.theme-playstation #mobile-player-shuffle-btn.active,
+    body.theme-playstation #mobile-player-loop-btn.active {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* --- AJUSTEMENTS PC --- */
+@media (min-width: 953px) {
+
+    /* Containers that need light glassy background on PC */
+    body.theme-playstation .guide-list,
+    body.theme-playstation .daily-bonus-widget,
+    body.theme-playstation #daily-bonus-section,
+    body.theme-playstation #playlist-reco-list,
+    body.theme-playstation .about-card-template {
+        background: rgba(255, 255, 255, 0.1) !important;
+        /* "un peu clair" */
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        /* "1px de rebord" */
+        backdrop-filter: blur(15px) !important;
+        border-radius: 20px !important;
+        box-shadow: none !important;
+        color: white !important;
+    }
+
+    /* Reset items inside these containers to be transparent */
+    body.theme-playstation .guide-list .guide-row,
+    body.theme-playstation .daily-bonus-widget .daily-bonus-list-item,
+    body.theme-playstation #playlist-reco-list .reco-list-item {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* Remove border from last item */
+    body.theme-playstation .guide-list .guide-row:last-child,
+    body.theme-playstation .daily-bonus-widget .daily-bonus-list-item:last-child,
+    body.theme-playstation #playlist-reco-list .reco-list-item:last-child {
+        border-bottom: none !important;
+    }
+
+
+    /* Fix icons */
+    body.theme-playstation .guide-icon,
+    body.theme-playstation .reco-list-img {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+    }
+
+    /* NOUVEAU: Reset des onglets sur PC pour garder le style "Slide" (XMB) */
+    body.theme-playstation .playlist-tab-btn {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 2px solid transparent !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        padding: 10px 15px !important;
+    }
+
+    body.theme-playstation .playlist-tab-btn.active {
+        border-bottom-color: var(--active-color) !important;
+        background: transparent !important;
+    }
+
+    /* Boutons actifs en blanc brillant (PC) */
+    body.theme-playstation #shuffle-btn.active,
+    body.theme-playstation #loop-btn.active {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+}
