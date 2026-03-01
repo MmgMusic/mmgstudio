@@ -1,0 +1,92 @@
+/* css/default-2-theme.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+/* --- THÈME DEFAULT 2 (Style Template) --- */
+body.theme-default-2 {
+    --bg-color: transparent;
+    --text-color: #111827;
+    --text-muted: #6b7280;
+    --card-bg: transparent;
+    --card-border: transparent;
+    --ui-bar-bg: transparent;
+    --ui-bar-border: transparent;
+    --active-color: #6366f1;
+    /* Indigo */
+    --icon-color: #6b7280;
+    --icon-hover-bg: rgba(0, 0, 0, 0.05);
+    --search-bar-bg: transparent;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --card-style-bg: transparent;
+    --card-style-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body.theme-default-2 .sidebar,
+body.theme-default-2 .bottom-ui-container,
+body.theme-default-2 .mobile-bottom-nav,
+body.theme-default-2 .mobile-mini-player,
+body.theme-default-2 .mobile-full-player,
+body.theme-default-2 .settings-card,
+body.theme-default-2 .mobile-queue-panel {
+    background-color: var(--ui-bar-bg) !important;
+    border: none !important;
+}
+
+body.theme-default-2 .card,
+body.theme-default-2 .dashboard-card {
+    border-radius: 20px;
+    box-shadow: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+body.theme-default-2 .card:hover,
+body.theme-default-2 .dashboard-card:hover {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+}
+
+/* NOUVEAU: Supprime les fonds et contours pour que tout flotte sur le background */
+body.theme-default-2 .top-bar-pc-clean .search-bar,
+body.theme-default-2 .search-box,
+body.theme-default-2 .top-bar-pc-clean .top-bar-right,
+body.theme-default-2 #playlist-reco-list,
+body.theme-default-2 .guide-list,
+body.theme-default-2 .about-card-template,
+body.theme-default-2 .reco-list-item,
+body.theme-default-2 .guide-row,
+body.theme-default-2 .daily-bonus-widget,
+body.theme-default-2 #daily-bonus-section,
+body.theme-default-2 .dashboard-card,
+body.theme-default-2 .news-card-container,
+body.theme-default-2 .news-scroll .news-item,
+body.theme-default-2 .reco-card,
+body.theme-default-2 .content-sections-card.list-view,
+body.theme-default-2 #library-container.list-view,
+body.theme-default-2 .shop-list-container,
+body.theme-default-2 #playlist-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Exception pour la carte "Prochaine sortie" qui a souvent une image de fond */
+body.theme-default-2 .upcoming-release-card {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* NOUVEAU: Supprime la bordure blanche de l'image "À propos" */
+body.theme-default-2 .about-card-image-container {
+    border: none !important;
+}
+
+/* NOUVEAU: Supprime les bordures de séparation dans les listes pour un look totalement épuré */
+body.theme-default-2 .shop-list-item,
+body.theme-default-2 .content-sections-card.list-view .card,
+body.theme-default-2 .playlist-item {
+    border-bottom: none !important;
+}
