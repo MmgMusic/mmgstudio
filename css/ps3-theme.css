@@ -534,7 +534,8 @@ body.theme-playstation .context-menu-btn {
     body.theme-playstation .top-bar {
         background-color: #002d5c !important;
         /* PS3 Blue */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        /* CORRECTION: Bordure retirée pour une transition parfaite avec la barre de statut */
+        border-bottom: none !important;
         display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
