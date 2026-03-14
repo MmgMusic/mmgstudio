@@ -905,12 +905,6 @@
     "shopItems": {
         "backgrounds": [
             {
-                "id": "bg-default-theme",
-                "name": "Default",
-                "image": "assets/backgrounds/Background 3.webp",
-                "cost": 0
-            },
-            {
                 "id": "bg-icons",
                 "name": "Icons",
                 "nameKey": "bg_icons",
