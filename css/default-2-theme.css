@@ -1,0 +1,638 @@
+/* css/default-2-theme.css */
+
+/* --- THÈME DEFAULT 2 (Gradient Pastel) --- */
+body.theme-default-2 {
+    --bg-color: transparent;
+    --text-color: #111827;
+    --text-muted: #6e6e8c;
+    /* Gris pourpré */
+    --card-bg: transparent;
+    --card-border: transparent;
+    --ui-bar-bg: transparent;
+    --ui-bar-border: transparent;
+    --active-color: #8b5cf6;
+    /* Violet Indigo sophistiqué */
+    --icon-color: #6e6e8c;
+    /* Gris pourpré */
+    --icon-hover-bg: transparent;
+    --search-bar-bg: transparent;
+    --shadow-color: transparent;
+    --card-style-bg: transparent;
+    --card-style-shadow: none;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    /* Mesh Gradient boosté - couleurs plus présentes et saturées */
+    background:
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.7) 0px, transparent 55%),
+        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.6) 0px, transparent 55%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.55) 0px, transparent 55%),
+        radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.55) 0px, transparent 55%),
+        #f0f4ff !important;
+    background-attachment: fixed !important;
+    animation: mesh-subtle-glow 20s ease-in-out infinite alternate;
+}
+
+/* Cache l'animation de fond blanche par défaut pour voir le mesh */
+body.theme-default-2 .animation-bg-area {
+    display: none !important;
+}
+
+@keyframes mesh-subtle-glow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(15deg);
+    }
+}
+
+/* Version Sombre du Mesh Gradient - Plus saturé */
+body.theme-default-2.dark-theme {
+    background:
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.6) 0px, transparent 55%),
+        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.6) 0px, transparent 55%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.55) 0px, transparent 55%),
+        radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.55) 0px, transparent 55%),
+        #080c18 !important;
+}
+
+/* NOUVEAU: Panneaux et Overlays sont OPAQUES sur ce thème pour la lisibilité */
+body.theme-default-2 .settings-card,
+body.theme-default-2 .mobile-mini-player,
+body.theme-default-2 .mobile-bottom-nav,
+body.theme-default-2 .mobile-queue-panel,
+body.theme-default-2 .mobile-full-player,
+body.theme-default-2 .bottom-ui-container,
+body.theme-default-2 #custom-dialog,
+body.theme-default-2 .tutorial-step-content,
+body.theme-default-2 #guide-tooltip,
+body.theme-default-2 #guide-splash,
+body.theme-default-2 .card-menu-dropdown,
+body.theme-default-2 .mobile-card-menu-panel {
+    background: #ffffff !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.theme-default-2.dark-theme .settings-card,
+body.theme-default-2.dark-theme .mobile-mini-player,
+body.theme-default-2.dark-theme .mobile-bottom-nav,
+body.theme-default-2.dark-theme .mobile-queue-panel,
+body.theme-default-2.dark-theme .mobile-full-player,
+body.theme-default-2.dark-theme .bottom-ui-container,
+body.theme-default-2.dark-theme #custom-dialog,
+body.theme-default-2.dark-theme .tutorial-step-content,
+body.theme-default-2.dark-theme #guide-tooltip,
+body.theme-default-2.dark-theme #guide-splash,
+body.theme-default-2.dark-theme .card-menu-dropdown,
+body.theme-default-2.dark-theme .mobile-card-menu-panel {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Header PC & Éléments Glass : Translucidité Premium */
+body.theme-default-2 .top-bar-pc-clean .search-bar,
+body.theme-default-2 .top-bar-pc-clean .top-bar-right,
+body.theme-default-2 .shop-coin-counter {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.3s ease;
+}
+
+/* Boutons des paramètres en Violet */
+body.theme-default-2 .lang-btn.active {
+    background-color: var(--active-color) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Boutons transparents colorés (View Switch & WiFi) */
+body.theme-default-2 .view-switch-btn.active,
+body.theme-default-2 .wifi-arrow-btn {
+    background-color: transparent !important;
+    color: var(--active-color) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.theme-default-2 .switch input:checked+.slider {
+    background-color: var(--active-color) !important;
+}
+
+
+/* Boutons Sociaux & Switch : Encore plus transparents pour éviter l'effet "bloc blanc" */
+body.theme-default-2 .social-btn-small,
+body.theme-default-2 .about-switch-btn {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: none !important;
+}
+
+body.theme-default-2.dark-theme .top-bar-pc-clean .search-bar,
+body.theme-default-2.dark-theme .top-bar-pc-clean .top-bar-right,
+body.theme-default-2.dark-theme .shop-coin-counter {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.theme-default-2.dark-theme .social-btn-small,
+body.theme-default-2.dark-theme .about-switch-btn {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Header PC : Entièrement transparent */
+body.theme-default-2 .top-bar-pc-clean,
+body.theme-default-2 .top-bar {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.theme-default-2 .sidebar,
+body.theme-default-2 .sidebar-content-wrapper,
+body.theme-default-2 .main-area,
+body.theme-default-2 .content-section-board,
+body.theme-default-2 .page-content {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* Thème Default 2 : "Editorial Glass" - Un look premium structuré mais léger */
+body.theme-default-2 .sidebar {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Application cohérente des couleurs de texte secondaires */
+body.theme-default-2 .card__description,
+body.theme-default-2 .reco-list-subtitle,
+body.theme-default-2 .playlist-item-subtitle,
+body.theme-default-2 .reco-subtitle,
+body.theme-default-2 .shop-list-subtitle,
+body.theme-default-2 .guide-description {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+}
+
+/* Titres principaux et labels des guides + playlists reco (PC et mobile) */
+body.theme-default-2 .guide-label,
+body.theme-default-2 .reco-list-title {
+    color: var(--text-color) !important;
+}
+
+/* Sous-titres : on écrase le #94a3b8 ! important de common.css */
+body.theme-default-2 .reco-list-subtitle,
+body.theme-default-2 #playlist-reco-list .reco-list-subtitle {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+}
+
+/* NOUVEAU: Titres de section et headers sur PC (match mobile) */
+body.theme-default-2 .section-header,
+body.theme-default-2 .section-header-simple,
+body.theme-default-2 .section-header-with-view-switcher {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 14px 0 10px 0 !important;
+}
+
+body.theme-default-2 .section-title {
+    color: var(--text-color) !important;
+    font-size: .75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: .08em !important;
+    margin: 0 !important;
+}
+
+/* Guide row : fond transparent (pas de contours compliqués) */
+body.theme-default-2 .guide-row {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: background 0.2s ease !important;
+    margin-bottom: 0 !important;
+}
+
+body.theme-default-2 .guide-row:last-child {
+    border-bottom: none !important;
+}
+
+body.theme-default-2 .guide-row:hover {
+    background: rgba(0, 0, 0, 0.03) !important;
+}
+
+body.theme-default-2.dark-theme .guide-row {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+}
+
+body.theme-default-2.dark-theme .guide-row:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Bonus badge : transparent normal (pas violet) */
+body.theme-default-2 .bonus-badge {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: var(--active-color) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+body.theme-default-2.dark-theme .bonus-badge {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Guide arrows et textes secondaires - visibilité correcte sur fond clear */
+body.theme-default-2 .guide-arrow {
+    color: var(--active-color) !important;
+    opacity: 0.8 !important;
+}
+
+/* LISTES & BLOCS D'ACCUEIL : Conteneur Glassmorphism Minimaliste (PC et MOBILE pour certains blocs) */
+body.theme-default-2 #playlist-reco-list,
+body.theme-default-2 .guide-list,
+body.theme-default-2 .about-card-template,
+body.theme-default-2 #daily-bonus-section,
+body.theme-default-2 .shop-list-container,
+body.theme-default-2 .news-card-container {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
+    border-radius: 28px !important;
+}
+
+body.theme-default-2.dark-theme #playlist-reco-list,
+body.theme-default-2.dark-theme .guide-list,
+body.theme-default-2.dark-theme .about-card-template,
+body.theme-default-2.dark-theme #daily-bonus-section,
+body.theme-default-2.dark-theme .shop-list-container,
+body.theme-default-2.dark-theme .news-card-container {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+@media (min-width: 953px) {
+
+    body.theme-default-2 .content-sections-card.list-view,
+    body.theme-default-2 #library-container.list-view,
+    body.theme-default-2 #playlist-container,
+    body.theme-default-2 .ui-block,
+    body.theme-default-2 .news-scroll .news-item,
+    body.theme-default-2 .upcoming-release-card {
+        background-color: rgba(255, 255, 255, 0.25) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.45) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
+        border-radius: 28px !important;
+    }
+
+    body.theme-default-2.dark-theme .content-sections-card.list-view,
+    body.theme-default-2.dark-theme #library-container.list-view,
+    body.theme-default-2.dark-theme #playlist-container,
+    body.theme-default-2.dark-theme .ui-block,
+    body.theme-default-2.dark-theme .news-scroll .news-item,
+    body.theme-default-2.dark-theme .upcoming-release-card {
+        background-color: rgba(15, 23, 42, 0.4) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    }
+}
+
+/* Formes spécifiques pour le header PC */
+body.theme-default-2 .top-bar-pc-clean .search-bar {
+    border-radius: 20px !important;
+    padding: 0 1.5rem !important;
+    height: 48px !important;
+}
+
+body.theme-default-2 .top-bar-pc-clean .top-bar-right {
+    border-radius: 9999px !important;
+    padding: 0 16px !important;
+    height: 48px !important;
+}
+
+/* Nettoyage des sous-éléments blancs */
+/* Nettoyage des sous-éléments : Pas de "boites" pour le daily bonus */
+body.theme-default-2 .guide-icon,
+body.theme-default-2 .reco-list-img {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(4px);
+}
+
+body.theme-default-2 .daily-bonus-card,
+body.theme-default-2 .daily-bonus-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+body.theme-default-2.dark-theme .guide-icon,
+body.theme-default-2.dark-theme .reco-list-img {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+body.theme-default-2.dark-theme .daily-bonus-card,
+body.theme-default-2.dark-theme .daily-bonus-item {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Suppression du texte violet dans le daily bonus (y compris au completed) */
+body.theme-default-2 #daily-bonus-section .bonus-day,
+body.theme-default-2 #daily-bonus-section .bonus-reward,
+body.theme-default-2 #daily-bonus-section .daily-bonus-item.completed * {
+    color: var(--text-color) !important;
+}
+
+/* NOUVEAU: Shop et Daily Bonus transparents (glassmorphism) sur tous les supports pour ce thème */
+@media (max-width: 952px) {
+    /* Sur mobile on peut vouloir moins de padding ou des ajustements spécifiques mais on garde la cohérence */
+}
+
+/* GRILLE : Pas de conteneur visible pour les cartes */
+body.theme-default-2 .card,
+body.theme-default-2 .dashboard-card {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* NOUVEAU: Supprime l'animation de bordure "Now Playing" car elle crée un contour */
+body.theme-default-2 .titles-grid .card.now-playing-card .card-image-container::before {
+    display: none !important;
+}
+
+/* NOUVEAU: Le titre des cartes ne doit avoir aucun contour (shadow ou stroke) pour un rendu plat */
+body.theme-default-2 .card__title,
+body.theme-default-2 .card__title span,
+body.theme-default-2 .card.now-playing-card .card__title,
+body.theme-default-2 .card.now-playing-card .card__title span {
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+}
+
+body.theme-default-2 .card.now-playing-card .card__title span {
+    color: var(--active-color) !important;
+}
+
+body.theme-default-2 .card,
+body.theme-default-2 .dashboard-card {
+    border-radius: 20px;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    transition: all 0.3s ease;
+}
+
+/* HOVER : Effet de survol différent selon la vue */
+/* En grille : On peut garder un léger lift (zoom) ou juste la luminosité */
+body.theme-default-2 .card:hover,
+body.theme-default-2 .dashboard-card:hover {
+    transform: translateY(-4px);
+    /* Lift réduit */
+    background-color: transparent !important;
+    filter: brightness(1.1);
+}
+
+/* En liste : PAS de zoom, juste un changement de couleur de fond (Glassmorphism) */
+body.theme-default-2 .list-view .card:hover,
+body.theme-default-2 #library-container.list-view .card:hover,
+body.theme-default-2 .playlist-item:hover {
+    transform: none !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    filter: none !important;
+}
+
+body.theme-default-2.dark-theme .list-view .card:hover,
+body.theme-default-2.dark-theme #library-container.list-view .card:hover,
+body.theme-default-2.dark-theme .playlist-item:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Suppression totale des contours sur les images de cartes en grille */
+body.theme-default-2 .card-image-container,
+body.theme-default-2 .card-image,
+body.theme-default-2 .dashboard-card img {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* NOUVEAU: Supprime les fonds et contours pour que tout flotte sur le background */
+body.theme-default-2 .search-box {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Exception pour la carte "Prochaine sortie" qui a souvent une image de fond */
+body.theme-default-2 .upcoming-release-card {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* NOUVEAU: Supprime la bordure blanche de l'image "À propos" */
+body.theme-default-2 .about-card-image-container {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* NOUVEAU: Supprime les bordures de séparation dans les listes pour un look totalement épuré */
+body.theme-default-2 .shop-list-item,
+body.theme-default-2 .content-sections-card.list-view .card,
+body.theme-default-2 .playlist-item {
+    border-bottom: none !important;
+}
+
+body.theme-default-2 .sidebar-nav-link:hover,
+body.theme-default-2 .sidebar-nav-link.active {
+    background-color: transparent !important;
+    color: var(--active-color) !important;
+    box-shadow: none !important;
+}
+
+/* NOUVEAU: Maintient la visibilité de la barre de progression malgré la transparence globale */
+body.theme-default-2 .progress-bar,
+body.theme-default-2 .mini-player-progress {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.theme-default-2.dark-theme .progress-bar,
+body.theme-default-2.dark-theme .mini-player-progress {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* NOUVEAU: Feedback de survol sur les icônes sans contour/fond */
+body.theme-default-2 .top-bar-btn:hover,
+body.theme-default-2 .clickable-icon:hover {
+    background-color: transparent !important;
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+/* Thème sombre spécifique pour Default 2 */
+body.theme-default-2.dark-theme {
+    --text-color: #f3f4f6;
+    --text-muted: #a5a5b5;
+    /* Gris pourpré */
+    --icon-color: #a5a5b5;
+    /* Gris pourpré */
+}
+
+body.theme-default-2.dark-theme .sidebar {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Bloc conteneurs sombres exclusif au PC (pour ne pas avoir de conteneur sur mobile) */
+@media (min-width: 953px) {
+
+    body.theme-default-2.dark-theme .card,
+    body.theme-default-2.dark-theme .dashboard-card,
+    body.theme-default-2.dark-theme .ui-block,
+    body.theme-default-2.dark-theme #playlist-reco-list,
+    body.theme-default-2.dark-theme .about-card-template {
+        background-color: rgba(30, 41, 59, 0.3) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    body.theme-default-2.dark-theme .card:hover {
+        background-color: rgba(30, 41, 59, 0.5) !important;
+    }
+}
+
+/* Header mobile : Blanc solide pour matcher la nav du bas, sans séparation visuelle */
+@media (max-width: 952px) {
+
+    /* Synchro des titres cachés comme sur Default */
+    body.theme-default-2 .hero-section .section-header-simple,
+    body.theme-default-2 .daily-bonus-section .section-header-simple {
+        display: none !important;
+    }
+
+    /* On laisse le margin-bottom de 12px s'appliquer (via .dashboard-standalone-section)
+       pour que le bonus ne soit pas "trop remonté" par rapport au défaut */
+
+    /* Séparation des guides comme sur default mais transparent */
+
+    /* Séparation des guides comme sur default mais transparent */
+    body.theme-default-2 .guide-list {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        gap: 10px !important;
+    }
+
+    body.theme-default-2 .guide-row {
+        background: rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 16px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    body.theme-default-2.dark-theme .guide-row {
+        background: rgba(15, 23, 42, 0.4) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    body.theme-default-2 .mobile-header-icons,
+    body.theme-default-2 .top-bar {
+        background: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        margin: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.theme-default-2 .profile-switch,
+    body.theme-default-2 .profile-switch.sliding-tabs {
+        background: #ffffff !important;
+        margin: 0 !important;
+        margin-top: auto !important;
+        padding: 0 !important;
+        height: 40px !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+    }
+
+    /* Les boutons à l'intérieur du switch sont transparents pour fondre dans le header */
+    body.theme-default-2 .profile-switch-btn,
+    body.theme-default-2 .about-switch-btn {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    body.theme-default-2.dark-theme .mobile-header-icons,
+    body.theme-default-2.dark-theme .top-bar {
+        background: #1e293b !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    body.theme-default-2.dark-theme .profile-switch,
+    body.theme-default-2.dark-theme .profile-switch.sliding-tabs {
+        background: #1e293b !important;
+        margin: 0 !important;
+        margin-top: auto !important;
+        padding: 0 !important;
+        height: 40px !important;
+        border: none !important;
+    }
+
+    body.theme-default-2.dark-theme .profile-switch-btn,
+    body.theme-default-2.dark-theme .about-switch-btn {
+        background: transparent !important;
+        border: none !important;
+    }
+}
