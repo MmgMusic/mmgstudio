@@ -3155,3 +3155,8 @@ body.dark-theme .list-view .card-menu-btn {
 .news-article-content p {
     margin-bottom: 1.5rem;
 }
+
+#albums-section .section-title,
+#videos-section .section-title {
+    display: none;
+}
