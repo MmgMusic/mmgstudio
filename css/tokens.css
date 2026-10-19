@@ -1,0 +1,373 @@
+/* ================================================================
+   TOKENS.CSS — Source unique de vérité pour toutes les couleurs
+   
+   À charger EN PREMIER dans index.html, avant common.css.
+   
+   FONCTIONNEMENT :
+   - Les --t-xxx définissent les couleurs sémantiques du thème actif
+   - Les variables legacy (--active-color, --ui-bar-bg…) sont
+     recalculées depuis les tokens → common/mobile/computer.css
+     n'ont PAS besoin d'être modifiés
+   - Chaque thème ne redéfinit que les tokens qui changent
+   RÈGLES D'UTILISATION DE LA COULEUR DE THÈME :
+   - var(--t-accent) / var(--active-color) est STRICTEMENT réservé aux éléments
+     interactifs : boutons d'action (CTA), liens, et états actifs (tabs/filtres).
+   - Les textes informatifs, titres statiques et éléments décoratifs doivent
+     utiliser exclusivement les couleurs neutres (var(--t-text), var(--text-color)).
+   ================================================================ */
+
+:root {
+    /* ══ ANIMATIONS & TIMING ══════════════════════════════════════ */
+    --dur-fast: 150ms;
+    --dur-normal: 300ms;
+    --dur-slow: 500ms;
+    --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+    /* ══ TOKENS SÉMANTIQUES ══════════════════════════════════════ */
+
+    /* Fond de page */
+    --t-bg: #ffffff;
+    --t-bg-image: none;
+
+    /* Surfaces */
+    --t-surface: #ffffff;
+    /* cartes, items de liste */
+    --t-surface-alt: #f1f5f9;
+    /* fond subtil hover/secondaire */
+    --t-surface-raised: #ffffff;
+    /* overlays, modals */
+    --t-surface-input: #f0f2f5;
+    /* champs de saisie */
+
+    /* Sidebar & Player bar */
+    --t-sidebar-bg: #ffffff;
+    --t-sidebar-border: #e5e7eb;
+    --t-panel-bg: #ffffff;
+    --t-panel-border: #e5e7eb;
+    --t-panel-backdrop: none;
+
+    /* Texte */
+    --t-text: #0f172a;
+    --t-text-muted: var(--t-text);
+    --t-text-secondary: var(--t-text);
+
+    /* Bordures */
+    --t-border: #cbd5e1;
+    --t-border-subtle: #e2e8f0;
+    --t-border-divider: #94a3b8;
+
+    /* Couleur d'accentuation */
+    --t-accent: #3b82f6;
+    --t-accent-rgb: 59, 130, 246;
+
+    /* Icônes */
+    --t-icon: #64748b;
+    --t-icon-hover-bg: rgba(0, 0, 0, 0.025);
+
+    /* Couleurs sémantiques fixes (ne changent pas avec les thèmes) */
+    --t-like: #e91e63;
+    --t-danger: #ef4444;
+    --t-success: #10b981;
+    --t-warning: #f59e0b;
+
+    /* Status colors */
+    --t-status-unlocked: var(--t-text-muted);
+
+    /* Tags */
+    --t-tag-bg: rgba(0, 0, 0, 0.05);
+    --t-tag-hover-bg: rgba(0, 0, 0, 0.1);
+    --t-tag-color: inherit;
+
+    /* Sliders */
+    --t-slider-off: #ccc;
+
+    /* ══ BRIDGE : variables legacy recalculées depuis les tokens ══
+       Grâce à ces alias, common.css / mobile.css / computer.css
+       n'ont pas besoin d'être modifiés. */
+
+    --bg-color: var(--t-bg);
+    --bg-image: var(--t-bg-image);
+    --text-color: var(--t-text);
+    --card-bg: var(--t-surface);
+    --card-border: var(--t-border-subtle);
+    --ui-bar-bg: var(--t-surface);
+    --ui-bar-border: var(--t-border);
+    --active-color: var(--t-accent);
+    --icon-color: var(--t-icon);
+    --icon-hover-bg: var(--t-icon-hover-bg);
+    --card-style-bg: var(--t-surface);
+    --card-style-shadow: none;
+    --card-style-accent: var(--t-accent);
+    --search-bar-bg: var(--t-surface-input);
+    --slider-bg: var(--t-slider-off);
+    --slider-checked-bg: var(--t-accent);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    /* Nouveaux tokens exposés dans common.css */
+    --text-muted: var(--t-text-muted);
+    --surface-subtle: var(--t-surface-alt);
+    --clr-like: var(--t-like);
+    --clr-danger: var(--t-danger);
+    --clr-success: var(--t-success);
+    --border-divider: var(--t-border-divider);
+
+    /* ══ TOKENS DE LIGNE UNIFIÉS - 1 style pour TOUT ce qui est liste/rangée ══ */
+    --t-row-bg: var(--t-surface);
+    --t-row-border: 1px solid var(--t-border-subtle);
+    --t-row-backdrop: none;
+    --t-row-color: var(--t-text);
+    --t-row-radius: 12px;
+    --t-row-padding: 10px 15px;
+    /* padding horizontal unifié */
+    --t-row-min-height: 68px;
+    /* hauteur FIXE pour tous les éléments liste */
+    --t-row-shadow: none;
+    --t-row-hover-bg: var(--t-surface-alt);
+    --t-row-hover-color: var(--t-accent);
+    --t-row-hover-transform: translateX(6px);
+    --t-row-thumb-size: 44px;
+    /* vignette/icône à gauche */
+    --t-row-thumb-radius: 10px;
+
+    /* Typographie unifiée pour les éléments de liste */
+    --t-row-title-size: 1rem;
+    --t-row-title-weight: 700;
+    --t-row-subtitle-size: 0.78rem;
+    --t-row-subtitle-weight: 500;
+
+    /* Alias de compatibilité (pour ne pas casser les thèmes existants) */
+    --t-list-item-bg: var(--t-row-bg);
+    --t-list-item-border: var(--t-row-border);
+    --t-list-item-backdrop: var(--t-row-backdrop);
+    --t-list-item-color: var(--t-row-color);
+    --t-list-item-hover-bg: var(--t-row-hover-bg);
+    --t-list-item-hover-transform: var(--t-row-hover-transform);
+
+    --t-content-card-bg: var(--t-row-bg);
+    --t-content-card-border: var(--t-row-border);
+    --t-content-card-backdrop: var(--t-row-backdrop);
+
+    --t-ui-panel-bg: var(--t-panel-bg);
+    --t-ui-panel-border: 1px solid var(--t-panel-border);
+    --t-ui-panel-backdrop: var(--t-panel-backdrop);
+    --t-ui-panel-backdrop: var(--t-panel-backdrop);
+    --t-ui-panel-shadow: 0 8px 32px var(--shadow-color);
+
+    --t-icon-box-bg: var(--t-surface);
+    --t-icon-box-border: 1px solid var(--t-border-subtle);
+    --t-icon-box-color: var(--t-icon);
+    --t-icon-box-size: 42px;
+    --t-icon-inner-size: 20px;
+
+    /* ══ TYPOGRAPHIE UNIFIÉE ══════════════════════════════════════ */
+    --font-xl: 2.8rem;
+    /* Titres Hero, Détails Articles */
+    --font-h1: 2rem;
+    /* Titres de Pages, Détails Musique */
+    --font-h2: 1.4rem;
+    /* Titres de Sections (Actualités, Playlists...) */
+    --font-h3: 1.05rem;
+    /* Titres de Cartes, Produits Boutique */
+    --font-body: 0.92rem;
+    /* Texte classique, Descriptions, About */
+    --font-small: 0.78rem;
+    /* Métadonnées, Subtitles, Dates */
+    --font-tiny: 0.68rem;
+    /* Badges, micro-labels, tags */
+    --details-section-label: 0.7rem;
+    /* Uppercase section labels inside media/details pages (INSPIRATIONS, ALBUM, ASSOCIATED CONTENT…) */
+
+    /* Bridge Legacy Typography */
+    --font-h1: var(--font-h1);
+    --font-h2: var(--font-h2);
+    --font-h3: var(--font-h3);
+    --font-body: var(--font-body);
+    --font-small: var(--font-small);
+
+
+    /* ══ TOP-BAR-RIGHT PC (capsule d'icônes) ══ */
+    --t-topbar-right-bg: rgba(241, 245, 249, 0.9);
+    --t-topbar-right-border: 1px solid rgba(0, 0, 0, 0.05);
+    --t-topbar-right-icon: var(--t-icon);
+    --t-topbar-right-hover-bg: rgba(0, 0, 0, 0.05);
+    --t-topbar-right-backdrop: none;
+}
+
+/* ════ MODE SOMBRE (défaut global) ════════════════════════════════ */
+body.dark-theme {
+    color-scheme: dark;
+
+    --t-bg: #121212;
+    --t-surface: #1f2937;
+    --t-surface-alt: #1e293b;
+    --t-surface-raised: #1f2937;
+    --t-surface-input: #374151;
+    --t-sidebar-bg: #121212;
+    --t-sidebar-border: #374151;
+    --t-panel-bg: #1f2937;
+    --t-panel-border: #374151;
+    --t-panel-backdrop: none;
+    --t-text: #ffffff;
+    --t-text-muted: var(--t-text);
+    --t-text-secondary: var(--t-text);
+    --t-border: #374151;
+    --t-border-subtle: rgba(255, 255, 255, 0.05);
+    --t-border-divider: #475569;
+    --t-accent: #818cf8;
+    --t-accent-rgb: 129, 140, 248;
+    --t-icon: #e5e7eb;
+    --t-icon-hover-bg: rgba(255, 255, 255, 0.04);
+    --t-slider-off: #4b5563;
+
+    /* Surcharge dark theme des tokens de structure (optionnel car ils utilisent les --t-xxx) */
+    --t-list-item-border: 1px solid var(--t-border);
+    --t-content-card-border: 1px solid var(--t-border);
+    --t-icon-box-bg: rgba(255, 255, 255, 0.1);
+    --t-icon-box-color: var(--t-text);
+
+    /* Top-bar-right dark */
+    --t-topbar-right-bg: transparent;
+    --t-topbar-right-border: 1px solid rgba(255, 255, 255, 0.1);
+    --t-topbar-right-icon: #ffffff;
+    --t-topbar-right-hover-bg: rgba(255, 255, 255, 0.08);
+    --t-topbar-right-backdrop: none;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   THÈMES — Seuls les tokens qui DIFFÈRENT du défaut
+   Aucune règle CSS ici, uniquement des redéfinitions de tokens.
+   Les règles structurelles (décors, animations…) restent dans
+   leur fichier *-theme.css dédié.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Frutiger Aero / 2000s Glass ───────────────────────────────*/
+body.theme-16bit {
+    --t-bg: #a9dcf5;
+    --t-bg-image: linear-gradient(135deg, #87ceeb 0%, #e0f7fa 50%, #98fb98 100%);
+    --t-surface: rgba(255, 255, 255, 0.85);
+    --t-surface-raised: #ffffff;
+    --t-surface-input: rgba(255, 255, 255, 0.4);
+    --t-sidebar-bg: rgba(255, 255, 255, 0.95);
+    --t-sidebar-border: rgba(255, 255, 255, 0.6);
+    --t-panel-bg: rgba(255, 255, 255, 0.75);
+    --t-panel-border: rgba(255, 255, 255, 0.6);
+    --t-panel-backdrop: none;
+    --t-text: #004466;
+    --t-text-muted: var(--t-text);
+    --t-text-secondary: var(--t-text);
+    --t-border: rgba(255, 255, 255, 0.9);
+    --t-border-subtle: rgba(0, 68, 102, 0.08);
+    --t-border-divider: #8bcce6;
+    --t-accent: #0088cc;
+    --t-accent-rgb: 0, 136, 204;
+    --t-icon: #005580;
+    --t-icon-hover-bg: rgba(255, 255, 255, 0.4);
+    --t-slider-off: #8bcce6;
+
+    /* Tags */
+    --t-tag-bg: rgba(255, 255, 255, 0.4);
+    --t-tag-hover-bg: rgba(255, 255, 255, 0.6);
+
+    /* Rangées liste — verre blanc Aero */
+    --t-row-bg: rgba(255, 255, 255, 0.75);
+    --t-row-border: 1px solid rgba(255, 255, 255, 0.7);
+    --t-row-backdrop: none;
+    --t-row-radius: 12px;
+    --t-row-shadow: 0 2px 8px rgba(0, 60, 100, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    --t-row-hover-bg: linear-gradient(to bottom, rgba(255, 255, 255, .95) 0%, rgba(214, 239, 255, .95) 100%);
+    --t-row-hover-transform: translateX(4px);
+}
+
+/* ── Spotimon / Pokédex ─────────────────────────────────────── */
+body.theme-spotimon {
+    --t-bg: #f8fafc;
+    --t-surface: #ffffff;
+    --t-surface-raised: #ffffff;
+    --t-surface-input: #ffffff;
+    --t-sidebar-bg: linear-gradient(to bottom, #d31027, #910a19);
+    --t-sidebar-border: transparent;
+    --t-panel-bg: #111111;
+    --t-panel-border: transparent;
+    --t-panel-backdrop: none;
+    --t-text: #111827;
+    --t-text-muted: var(--t-text);
+    --t-text-secondary: var(--t-text);
+    --t-border: rgba(0, 0, 0, 0.1);
+    --t-border-subtle: rgba(0, 0, 0, 0.04);
+    --t-border-divider: rgba(0, 0, 0, 0.08);
+    --t-accent: #dc0a2d;
+    --t-accent-rgb: 220, 10, 45;
+    --t-icon: #111827;
+    --t-icon-hover-bg: rgba(0, 0, 0, 0.05);
+    --t-slider-off: #e2e8f0;
+
+    /* Tags */
+    --t-tag-bg: rgba(0, 0, 0, 0.05);
+    --t-tag-hover-bg: rgba(0, 0, 0, 0.1);
+
+    /* Rangées liste — fond blanc Pokédex, bord très discret */
+    --t-row-bg: #ffffff;
+    --t-row-border: 1px solid rgba(0, 0, 0, 0.05);
+    --t-row-radius: 12px;
+    --t-row-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --t-row-hover-bg: #f9fafb;
+
+
+    /* Top-bar-right Spotimon */
+    --t-topbar-right-bg: rgba(255, 255, 255, 0.8);
+    --t-topbar-right-border: 1px solid rgba(0, 0, 0, 0.05);
+    --t-topbar-right-icon: #111827;
+    --t-topbar-right-hover-bg: rgba(0, 0, 0, 0.05);
+    --t-topbar-right-backdrop: none;
+}
+
+/* ── Nintendo DS Theme Tokens ──────────────────────────────── */
+body.theme-ds {
+    --t-bg: #e5e7eb;
+    --t-bg-image: radial-gradient(#cfd5dd 1px, transparent 1px),
+        linear-gradient(180deg, #e5e8ec 0%, #d8dde4 100%);
+    --t-surface: #ffffff;
+    --t-surface-alt: #f1f5f9;
+    --t-surface-raised: #ffffff;
+    --t-surface-input: #ffffff;
+    --t-sidebar-bg: #eef2f7;
+    --t-sidebar-border: #b0b8c5;
+    --t-panel-bg: #f8fafc;
+    --t-panel-border: #b8c2d1;
+    --t-panel-backdrop: none;
+    --t-text: #1e293b;
+    --t-text-muted: #64748b;
+    --t-text-secondary: #475569;
+    --t-border: #b8c2d1;
+    --t-border-subtle: #cbd5e1;
+    --t-border-divider: #cbd5e1;
+    --t-accent: #526eff;
+    --t-accent-rgb: 82, 110, 255;
+    --active-color: #526eff !important;
+    --t-status-unlocked: #526eff;
+    --t-icon: #475569;
+    --t-icon-hover-bg: rgba(82, 110, 255, 0.08);
+    --t-slider-off: #cbd5e1;
+
+    /* Rangées (DS Box Style) */
+    --t-row-bg: #ffffff;
+    --t-row-border: 2px solid #b8c2d1;
+    --t-row-backdrop: none;
+    --t-row-shadow: 0 3px 0 #9ca8bb;
+    --t-row-hover-bg: #f1f5f9;
+
+    /* Tags */
+    --t-tag-bg: #e2e8f0;
+    --t-tag-hover-bg: #cbd5e1;
+
+    /* Top-bar-right DS */
+    --t-topbar-right-bg: #ffffff;
+    --t-topbar-right-border: 2px solid #b8c2d1;
+    --t-topbar-right-icon: #1e293b;
+    --t-topbar-right-hover-bg: #f1f5f9;
+    --t-topbar-right-backdrop: none;
+}
